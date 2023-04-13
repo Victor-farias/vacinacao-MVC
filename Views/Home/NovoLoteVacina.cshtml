@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Novo lote de vacina";
+}
+
+@model vacinacao.DTO.LoteVacinaDTO;
+
+<h3>Novo lote de vacina</h3>
+<hr>
+<form class="form-horizontal" asp-controller="LotesVacinas" asp-action="Salvar" method="POST">
+    <input type="hidden" asp-for="Id" value="0"> 
+    
+    <label asp-for="VacinaId">Vacina</label>
+    <select class="form-control" asp-for="VacinaId" asp-items='@(new SelectList(@ViewBag.Vacinas, "Id", "Nome"))'></select><br>
+
+    <label asp-for="IdentificacaoDoLote">Identificação</label>
+    <input type="text" asp-for="IdentificacaoDoLote" class="form-control" placeholder="Identificação do lote">
+    <span asp-validation-for="IdentificacaoDoLote"></span><br> 
+
+    <label asp-for="QuantidadeRecebida">Quantidade recebida</label>
+    <input type="number" asp-for="QuantidadeRecebida" class="form-control" placeholder="Quantidade recebida">
+    <span asp-validation-for="QuantidadeRecebida"></span><br>
+
+    <label asp-for="QuantidadeRestante">Quantidade restante</label>
+    <input type="number" asp-for="QuantidadeRestante" class="form-control" placeholder="Quantidade restante">
+    <span asp-validation-for="QuantidadeRestante"></span><br>
+
+    <label asp-for="DataDeRecebimento">Data de recebimento</label>
+    <input type="date" asp-for="DataDeRecebimento" class="form-control">
+    <span asp-validation-for="DataDeRecebimento"></span><br>
+
+    <label asp-for="DataDeValidade">Data de validade</label>
+    <input type="date" asp-for="DataDeValidade" class="form-control">
+    <span asp-validation-for="DataDeValidade"></span><br>
+
+    <button class="btn btn-success">Cadastrar</button>
+</form>

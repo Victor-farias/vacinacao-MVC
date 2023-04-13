@@ -1,0 +1,34 @@
+@model vacinacao.DTO.VacinacaoDTO
+
+<h3>Editar vacinação</h3>
+<hr>
+<form class="form-horizontal" asp-controller="Vacinacoes" asp-action="Atualizar" method="POST">
+    <input type="hidden" asp-for="Id">
+
+    <label asp-for="Data">Data</label>
+    <input type="date" asp-for="Data" class="form-control">
+    <span asp-validation-for="Data"></span><br>
+    
+    <label asp-for="PessoaId">Pessoa</label>
+    <select class="form-control" asp-for="PessoaId" asp-items='@(new SelectList(@ViewBag.Pessoas, "Id", "NomeCompleto"))'></select><br>
+
+    <label asp-for="LoteVacinaId">Lote da vacina</label>
+    <select class="form-control" asp-for="LoteVacinaId" asp-items='@(new SelectList(@ViewBag.LotesVacinas, "Id", "IdentificacaoDoLote"))'></select><br>
+
+    <label asp-for="LocalDeVacinacaoId">Local da vacinação</label>
+    <select class="form-control" asp-for="LocalDeVacinacaoId" asp-items='@(new SelectList(@ViewBag.LocaisDeVacinacao, "Id", "Nome"))'></select><br>
+
+    <label asp-for="Dose">Dose</label>
+    <select class="form-control" asp-for="Dose">
+        @if (Model.Dose == 11) {
+            <option value="11">Única</option>
+        } else if (Model.Dose == 1) {
+            <option value="1">Primeira</option>
+            <option value="2">Segunda</option>
+        } else {
+            <option value="2">Segunda</option>
+        }
+    </select><br>
+
+    <button class="btn btn-success">Atualizar</button>
+</form>

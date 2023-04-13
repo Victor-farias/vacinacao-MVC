@@ -1,0 +1,24 @@
+@model vacinacao.DTO.PessoaDTO
+
+<h3>Editar pessoa</h3>
+<hr>
+<form class="form-horizontal" asp-controller="Pessoas" asp-action="Atualizar" method="POST">
+    <input type="hidden" asp-for="Id"> 
+
+    <label asp-for="Cpf">CPF</label>
+    <input type="number" asp-for="Cpf" class="form-control" placeholder="00000000000">
+    <span asp-validation-for="Cpf"></span><br>
+    
+    <label asp-for="NomeCompleto">Nome completo</label>
+    <input type="text" asp-for="NomeCompleto" class="form-control" placeholder="João da Silva Júnior">
+    <span asp-validation-for="NomeCompleto"></span><br>
+
+    <label asp-for="DataDeNascimento">Data de nascimento</label>
+    <input type="date" asp-for="DataDeNascimento" class="form-control">
+    <span asp-validation-for="DataDeNascimento"></span><br>
+
+    <label asp-for="EnderecoId">Endereço</label>
+    <select class="form-control" asp-for="EnderecoId" asp-items='@(new SelectList(@ViewBag.Enderecos, "Id", "Logradouro"))'></select><br>
+
+    <button class="btn btn-success">Atualizar</button>
+</form>

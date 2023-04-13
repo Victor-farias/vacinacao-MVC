@@ -1,0 +1,27 @@
+@model vacinacao.DTO.VacinaDTO
+
+<h3>Editar vacina</h3>
+<hr>
+<form class="form-horizontal" asp-controller="Vacinas" asp-action="Atualizar" method="POST">
+    <input type="hidden" asp-for="Id">
+
+    <label asp-for="Nome">Nome</label>
+    <input type="text" asp-for="Nome" class="form-control" placeholder="Nome da vacina">
+    <span asp-validation-for="Nome"></span><br>
+    
+    <label asp-for="Laboratorio">Laboratório</label>
+    <input type="text" asp-for="Laboratorio" class="form-control" placeholder="Nome do laboratório">
+    <span asp-validation-for="Laboratorio"></span><br>
+
+    <label asp-for="Posologia">Posologia</label>
+    <select class="form-control" asp-for="Posologia">
+        <option value="1">Dose única</option>
+        <option value="2">Duas doses</option>
+    </select><br>
+
+    <label asp-for="IntervaloEntreDoses">Intervalo entre as dose</label>
+    <input type="number" asp-for="IntervaloEntreDoses" class="form-control" placeholder="Nome do laboratório">
+    <span asp-validation-for="IntervaloEntreDoses"></span><br>
+
+    <button class="btn btn-success">Atualizar</button>
+</form>

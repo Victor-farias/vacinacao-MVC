@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Endereços";
+}
+
+@model IEnumerable<vacinacao.Models.Endereco>
+
+<h2>Endereços</h2>
+<hr>
+<a asp-action="NovoEndereco" asp-controller="Home" class="btn btn-success">Adicionar endereço</a>
+<hr>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>CEP</th>
+            <th>Logradouro</th>
+            <th>Número</th>
+            <th>Complemento</th>
+            <th>Município</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var endereco in Model)
+        {
+            <tr>
+                <td>@endereco.Id</td>
+                <td>@endereco.Cep</td>
+                <td>@endereco.Logradouro</td>
+                <td>@endereco.Numero</td>
+                <td>@endereco.Complemento</td>
+                <td>@endereco.Municipio</td>
+                <td>@endereco.Estado</td>
+                <td>
+                    <a class="btn btn-primary" href="/Home/EditarEndereco/@endereco.Id">Editar</a>
+
+                    <form style="display: inline;" asp-controller="Enderecos" asp-action="Deletar">
+                        <input type="hidden" name="id" id="id" value="@endereco.Id">
+                        <button class="btn btn-danger">Deletar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Vacinas";
+}
+
+@model IEnumerable<vacinacao.Models.Vacina>
+
+<h2>Vacinas</h2>
+<hr>
+<a asp-action="NovaVacina" asp-controller="Home" class="btn btn-success">Adicionar vacina</a>
+<hr>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Laboratório</th>
+            <th>Posologia</th>
+            <th>Intervalo entre as doses</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var vacina in Model)
+        {
+            <tr>
+                <td>@vacina.Id</td>
+                <td>@vacina.Nome</td>
+                <td>@vacina.Laboratorio</td>
+                    @if (@vacina.Posologia == 1) {
+                        <td>Dose única</td>
+                    } else {
+                        <td>Duas doses</td>
+                    }
+                <td>@vacina.IntervaloEntreDoses</td>
+                <td>
+                    <a class="btn btn-primary" href="/Home/EditarVacina/@vacina.Id">Editar</a>
+
+                    <form style="display: inline;" asp-controller="Vacinas" asp-action="Deletar">
+                        <input type="hidden" name="id" id="id" value="@vacina.Id">
+                        <button class="btn btn-danger">Deletar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

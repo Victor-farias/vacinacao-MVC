@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Nova vacinação";
+}
+
+@model vacinacao.DTO.VacinacaoDTO;
+
+<h3>Nova vacinação</h3>
+<hr>
+
+<form class="form-horizontal" asp-controller="Vacinacoes" asp-action="Salvar" method="POST">
+    <input type="hidden" asp-for="Id" value="0"> <!-- Só para não dar erro na hora da validação -->
+    
+    <label asp-for="PessoaId">Pessoa</label>
+    <select class="form-control" asp-for="PessoaId" asp-items='@(new SelectList(@ViewBag.Pessoas, "Id", "NomeCompleto"))'></select><br>
+    
+    <label asp-for="Data">Data</label>
+    <input type="date" asp-for="Data" class="form-control">
+    <span asp-validation-for="Data"></span><br> 
+
+    <label asp-for="LoteVacinaId">Lote da vacina</label>
+    <!--if (Model != null) {
+        <input type="text" asp-for="LoteVacinaId" class="form-control" value="" readonly>
+    }-->
+    <select class="form-control" asp-for="LoteVacinaId" asp-items='@(new SelectList(@ViewBag.LotesVacinas, "Id", "IdentificacaoDoLote"))'></select><br>
+
+    <label asp-for="LocalDeVacinacaoId">Local da vacinação</label>
+    <select class="form-control" asp-for="LocalDeVacinacaoId" asp-items='@(new SelectList(@ViewBag.LocaisDeVacinacao, "Id", "Nome"))'></select><br>
+
+    <label asp-for="Dose">Dose</label>
+    <select class="form-control" asp-for="Dose">  
+        <option value="11">Única</option>
+        <option value="1">Primeira</option>
+        <option value="2">Segunda</option>
+    </select><br>
+
+    <button class="btn btn-success">Cadastrar</button>
+</form>

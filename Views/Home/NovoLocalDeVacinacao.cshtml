@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "Novo local de vacinação";
+}
+
+@model vacinacao.DTO.LocalDeVacinacaoDTO;
+
+<h3>Novo local de vacinação</h3>
+<hr>
+<form class="form-horizontal" asp-controller="LocaisVacinacao" asp-action="Salvar" method="POST">
+    <input type="hidden" asp-for="Id" value="0"> 
+    
+    <label asp-for="Nome">Nome</label>
+    <input type="text" asp-for="Nome" class="form-control" placeholder="Nome do local">
+    <span asp-validation-for="Nome"></span><br> 
+
+    <label asp-for="EnderecoId">Endereço</label>
+    <select class="form-control" asp-for="EnderecoId" asp-items='@(new SelectList(@ViewBag.Enderecos, "Id", "Logradouro"))'></select><br>
+
+    <button class="btn btn-success">Cadastrar</button>
+</form>

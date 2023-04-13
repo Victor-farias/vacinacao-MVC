@@ -1,0 +1,16 @@
+@model vacinacao.DTO.LocalDeVacinacaoDTO;
+
+<h3>Editar local de vacinação</h3>
+<hr>
+<form class="form-horizontal" asp-controller="LocaisVacinacao" asp-action="Atualizar" method="POST">
+    <input type="hidden" asp-for="Id"> 
+
+    <label asp-for="Nome">Nome</label>
+    <input type="text" asp-for="Nome" class="form-control" placeholder="Nome">
+    <span asp-validation-for="Nome"></span><br>
+    
+    <label asp-for="EnderecoId">Endereço</label>
+    <select class="form-control" asp-for="EnderecoId" asp-items='@(new SelectList(@ViewBag.Enderecos, "Id", "Logradouro"))'></select><br>
+
+    <button class="btn btn-success">Atualizar</button>
+</form>

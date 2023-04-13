@@ -1,0 +1,64 @@
+@{
+    ViewData["Title"] = "Novo endereço";
+}
+
+@model vacinacao.DTO.EnderecoDTO;
+
+<h3>Novo endereço</h3>
+<hr>
+<form class="form-horizontal" asp-controller="Enderecos" asp-action="Salvar" method="POST">
+    <input type="hidden" asp-for="Id" value="0"> 
+    
+    <label asp-for="Cep" for="CEP">Cep</label>
+    <input id="cep" type="number" asp-for="Cep" class="form-control" placeholder="00000000">
+    <span asp-validation-for="Cep"></span><br> 
+
+    <label asp-for="Logradouro" for="Logradouro">Logradouro</label>
+    <input id="logradouro" type="text" asp-for="Logradouro" class="form-control" placeholder="Rua Astrazênica">
+    <span asp-validation-for="Logradouro"></span><br>
+
+    <label asp-for="Numero" for="numero">Número</label>
+    <input id="numero" type="number" asp-for="Numero" class="form-control" placeholder="567">
+    <span asp-validation-for="Numero"></span><br>
+
+    <label asp-for="Complemento" for="complemento">Complemento</label>
+    <input id="complemento" type="text" asp-for="Complemento" class="form-control" placeholder="Complemento">
+    <span asp-validation-for="Complemento"></span><br>
+
+    <label asp-for="Municipio">Município</label>
+    <input id="municipio" type="text" asp-for="Municipio" class="form-control" placeholder="Município">
+    <span asp-validation-for="Municipio"></span><br>
+    
+    <label asp-for="Estado">Estado</label>
+    <select id="estado" asp-for="Estado" class="form-control">
+        <option value="AC">Acre</option>
+		<option value="AL">Alagoas</option>
+		<option value="AP">Amapá</option>
+		<option value="AM">Amazonas</option>
+		<option value="BA">Bahia</option>
+		<option value="CE">Ceará</option>
+		<option value="DF">Distrito Federal</option>
+		<option value="ES">Espírito Santo</option>
+		<option value="GO">Goiás</option>
+		<option value="MA">Maranhão</option>
+		<option value="MT">Mato Grosso</option>
+		<option value="MS">Mato Grosso do Sul</option>
+		<option value="MG">Minas Gerais</option>
+		<option value="PA">Pará</option>
+		<option value="PB">Paraíba</option>
+		<option value="PR">Paraná</option>
+		<option value="PE">Pernambuco</option>
+		<option value="PI">Piauí</option>
+		<option value="RJ">Rio de Janeiro</option>
+		<option value="RN">Rio Grande do Norte</option>
+		<option value="RS">Rio Grande do Sul</option>
+		<option value="RO">Rondônia</option>
+		<option value="RR">Roraima</option>
+		<option value="SC">Santa Catarina</option>
+		<option value="SP">São Paulo</option>
+		<option value="SE">Sergipe</option>
+		<option value="TO">Tocantins</option>
+    </select>
+
+    <button class="btn btn-success">Cadastrar</button>
+</form>
